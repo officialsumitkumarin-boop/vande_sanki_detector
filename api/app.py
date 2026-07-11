@@ -4,6 +4,7 @@ from fastapi.responses import JSONResponse
 import tensorflow as tf
 import numpy as np
 import cv2
+import os          # 👈 YE ADD KARO
 from io import BytesIO
 from PIL import Image
 import uvicorn
@@ -23,12 +24,13 @@ app.add_middleware(
 )
 
 # Load model
+model = None  # 👈 YE ADD KARO
 try:
-    model = tf.keras.models.load_model('model/vande0.0.sanki.1.h5')
+    model_path = os.path.join(os.path.dirname(__file__), 'vande0.0.sanki.1.h5')
+    model = tf.keras.models.load_model(model_path)  # 👈 YE ADD KARO
     print("✅ VANDE0.0.SANKI.1 Model Loaded Successfully")
-except:
-    model = None
-    print("⚠️ Model file not found")
+except Exception as e:
+    print(f"⚠️ Model file not found: {e}")
 
 def preprocess_image(image):
     """Preprocess image for model"""
@@ -39,10 +41,11 @@ def preprocess_image(image):
 
 def analyze_image(image):
     """Deep analysis of image"""
-    # Check for AI artifacts
+    if model is None:  # 👈 YE ADD KARO
+        return "Error: Model not loaded", 0
+    
     prediction = model.predict(image, verbose=0)[0][0]
     
-    # Confidence calculation
     if prediction > 0.5:
         confidence = prediction * 100
         result = "AI Generated"
@@ -57,6 +60,7 @@ async def root():
     return {
         "message": "🇮🇳 VANDE0.0.SANKI.1 API Running",
         "model": "India's First Custom AI Image Detector",
+        "model_loaded": model is not None,  # 👈 YE ADD KARO
         "endpoints": {
             "/predict": "POST - Upload image for detection",
             "/health": "GET - Check API health"
@@ -73,8 +77,13 @@ async def health_check():
 
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
+    if model is None:  # 👈 YE ADD KARO
+        return JSONResponse(
+            content={"error": "Model not loaded"},
+            status_code=503
+        )
+    
     try:
-        # Read image
         contents = await file.read()
         nparr = np.frombuffer(contents, np.uint8)
         img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
@@ -85,13 +94,9 @@ async def predict(file: UploadFile = File(...)):
                 status_code=400
             )
         
-        # Preprocess
         processed_img = preprocess_image(img)
-        
-        # Predict
         result, confidence = analyze_image(processed_img)
         
-        # Additional analysis
         analysis_details = {
             "filename": file.filename,
             "result": result,
@@ -100,13 +105,11 @@ async def predict(file: UploadFile = File(...)):
             "country": "India",
             "made_with": "❤️",
             "details": {
-                "if_ai_detected": {
-                    "possible_sources": ["Midjourney", "DALL-E", "Stable Diffusion"],
-                    "artifacts": "AI generation patterns detected"
-                } if result == "AI Generated" else {
-                    "source": "Natural/Camera captured",
-                    "quality": "Original photograph"
-                }
+                "possible_sources": ["Midjourney", "DALL-E", "Stable Diffusion"],
+                "artifacts": "AI generation patterns detected"
+            } if result == "AI Generated" else {
+                "source": "Natural/Camera captured",
+                "quality": "Original photograph"
             }
         }
         

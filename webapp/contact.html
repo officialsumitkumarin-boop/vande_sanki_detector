@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | VANDE0.0.SANKI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .contact-container { max-width: 600px; margin: 0 auto; padding: 40px 20px; }
+        .contact-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 40px; text-align: center; }
+        .contact-avatar { width: 80px; height: 80px; background: var(--gradient-1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2rem; color: white; }
+        .contact-links { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+        .contact-link { display: flex; align-items: center; gap: 12px; background: var(--card-hover); padding: 14px 20px; border-radius: var(--radius-sm); text-decoration: none; color: var(--text); transition: var(--transition); border: 1px solid var(--border); }
+        .contact-link:hover { border-color: var(--saffron); transform: translateY(-2px); }
+        .contact-link i { font-size: 1.3rem; width: 24px; }
+        .contact-link.github i { color: #fff; }
+        .contact-link.linkedin i { color: #0077b5; }
+        .contact-link.email i { color: #ea4335; }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+    <div class="bg-grid"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="nav-brand">VANDE<span class="accent">.</span>SANKI</span></a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Detector</a>
+                <a href="working.html" class="nav-link">How It Works</a>
+                <a href="about.html" class="nav-link">News & Info</a>
+                <a href="privacy.html" class="nav-link">SANKI Policy</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="contact-container">
+        <div class="contact-card">
+            <div class="contact-avatar"><i class="fas fa-user-astronaut"></i></div>
+            <h2 style="font-family:'Space Grotesk',sans-serif;">Sumit Kumar</h2>
+            <p style="color:var(--text-secondary);">AI/ML Engineer • Creator of VANDE.SANKI</p>
+            
+            <div class="contact-links">
+                <a href="https://github.com/officialsumitkumarin-boop" target="_blank" class="contact-link github">
+                    <i class="fab fa-github"></i>
+                    <span><strong>GitHub</strong><br><small>github.com/officialsumitkumarin-boop</small></span>
+                </a>
+                <a href="https://www.linkedin.com/in/sumit-kumar-a52782349/" target="_blank" class="contact-link linkedin">
+                    <i class="fab fa-linkedin"></i>
+                    <span><strong>LinkedIn</strong><br><small>Sumit Kumar</small></span>
+                </a>
+                <a href="https://github.com/officialsumitkumarin-boop/vande_sanki_detector" target="_blank" class="contact-link">
+                    <i class="fas fa-code-branch" style="color:var(--saffron);"></i>
+                    <span><strong>Project Repository</strong><br><small>vande_sanki_detector</small></span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-bottom">
+            <p>© 2026 VANDE0.0.SANKI by Sumit Kumar. Made with ❤️ in India 🇮🇳</p>
+        </div>
+    </footer>
+</body>
+</html>

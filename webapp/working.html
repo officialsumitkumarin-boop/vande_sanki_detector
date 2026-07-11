@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How VANDE0.0.SANKI Works</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .working-container { max-width: 850px; margin: 0 auto; padding: 40px 20px; }
+        .step-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; margin-bottom: 20px; display: flex; gap: 20px; align-items: flex-start; transition: var(--transition); }
+        .step-card:hover { border-color: rgba(255,153,51,0.3); }
+        .step-number { width: 48px; height: 48px; background: var(--gradient-1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; color: white; flex-shrink: 0; }
+        .step-content h3 { font-size: 1.15rem; margin-bottom: 6px; }
+        .step-content p { color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6; }
+        .branch-visual { display: flex; gap: 12px; margin-top: 12px; flex-wrap: wrap; }
+        .branch-tag { background: rgba(255,153,51,0.1); border: 1px solid rgba(255,153,51,0.2); padding: 6px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 500; }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+    <div class="bg-grid"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="nav-brand">VANDE<span class="accent">.</span>SANKI</span></a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Detector</a>
+                <a href="working.html" class="nav-link active">How It Works</a>
+                <a href="about.html" class="nav-link">News & Info</a>
+                <a href="privacy.html" class="nav-link">SANKI Policy</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="working-container">
+        <div class="news-hero" style="text-align:center;padding:40px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:24px;">
+            <h1 style="font-family:'Space Grotesk',sans-serif;font-size:2rem;">How VANDE.SANKI Works</h1>
+            <p style="color:var(--text-secondary);">A 4-step process powered by custom 4-branch neural architecture</p>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <h3>Image Upload & Preprocessing</h3>
+                <p>Your image is resized to 224×224 pixels and normalized. This happens entirely in your browser's memory. No data leaves your device during this phase.</p>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <h3>Multi-Branch Analysis</h3>
+                <p>The image passes through 4 parallel neural network branches simultaneously:</p>
+                <div class="branch-visual">
+                    <span class="branch-tag">🔍 Branch 1: Features & Structure</span>
+                    <span class="branch-tag">🎨 Branch 2: Texture & Patterns</span>
+                    <span class="branch-tag">📐 Branch 3: Edge & Boundaries</span>
+                    <span class="branch-tag">📡 Branch 4: Frequency Analysis</span>
+                </div>
+                <p style="margin-top:8px;">Each branch specializes in detecting different AI artifacts that human eyes can't see.</p>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <h3>Attention & Merging</h3>
+                <p>Channel and spatial attention mechanisms weight important features. All 4 branches merge into a combined 512-dimensional feature vector for final classification.</p>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <h3>Result with Confidence Score</h3>
+                <p>The dense classifier outputs a probability score (0-100%). Scores above 50% indicate AI-generated content. The entire process takes just 0.3 seconds.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-bottom">
+            <p>© 2026 VANDE0.0.SANKI by Sumit Kumar. Made with ❤️ in India 🇮🇳</p>
+        </div>
+    </footer>
+</body>
+</html>
